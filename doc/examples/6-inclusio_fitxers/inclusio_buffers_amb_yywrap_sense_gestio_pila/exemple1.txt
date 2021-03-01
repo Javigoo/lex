@@ -1,0 +1,23 @@
+
+/* Fitxer de prova per Processadors del Llenguatge. */
+
+/* comentari multiples linies \
+ continua comentari correcte */
+
+
+/* comentari multiples linies 
+ continua comentari ERRONI */
+
+
+// Primer incloem la capcalera
+#include "capcalera.h"
+
+// Primera funcio
+int funcio( int a ) {
+   return a + 1;
+}
+
+int main( int argv, char *argv[] ) {
+   // Una funcio main trivial
+   return funcio( argv );
+}

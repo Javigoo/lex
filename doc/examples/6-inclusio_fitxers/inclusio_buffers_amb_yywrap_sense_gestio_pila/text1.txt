@@ -1,0 +1,6 @@
+Estem al text 1, passem al text 2
+
+#include "text2.txt"
+
+Tornem al text 1
+
