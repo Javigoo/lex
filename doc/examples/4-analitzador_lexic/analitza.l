@@ -15,7 +15,7 @@
 %%
 
 [ \t\n]+			;	/* Ignora blancs i tabuladors fora de string */
-					/* També ignora new line */
+						/* Tambe ignora new line */
 
 [0-9]+	|
 

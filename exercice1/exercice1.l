@@ -41,9 +41,33 @@ float get_percentage(int, int);
 
 %%
 
-#.*						return COMMENT;
+(False|await|else|import)	 |
+(pass|None|break|except)	 |
+(in|raise|True|class)		 |
+(finally|is|return|and)		 |
+(continue|for|lambda|try)	 |
+(as|def|from|nonlocal|while) | 
+(assert|del|global|not|with) |
+(async|elif|if|or|yield)	return KEYWORD;
 
-.						return OTHER;
+[a-zA-Z_][a-zA-Z0-9_]*		return ID;
+
+\"[^\"\n]*\"	|
+[0-9]+			|
+[0-9]*\.[0-9]+				return CONSTANT;
+
+(\+|-|\*|\/|%|\/\/|\*\*)	|	/* Arithmetic operators */
+(<|>|==|!=|>=|<=)		 	|	/* Comparison operators */
+(and|or|not)			 	|	/* Logical operators */
+(&|\||~|\^|>>|<<)		 	|	/* Bitwise operators */
+(=|\+=|-=|\*=|\/=|%=|\/\/=) |
+(\*\*=|&=|\|=|\^=|>>=|<<=)	|	/* Assignment operators */
+(is|is\snot|in|not\sin)			/* Special operators */
+							return OPERATOR;
+
+#.*							return COMMENT;
+
+.							return OTHER;
 
 %%
 
