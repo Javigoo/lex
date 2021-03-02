@@ -1,0 +1,8 @@
+# Soy un comentario
+
+soy_un_identificador = "Soy una constante"
+
+if(True):
+    pass
+else:
+    print("Hola")
