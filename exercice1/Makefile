@@ -1,5 +1,5 @@
 
-TARGET = llenguatge_programacio
+TARGET = exercice1
 all : $(TARGET)
 
 $(TARGET) : $(TARGET).l
