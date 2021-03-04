@@ -369,7 +369,7 @@ static const flex_int16_t yy_accept[18] =
 static const YY_CHAR yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    4,    1,    5,    1,    1,    1,    1,    6,
         7,    1,    1,    1,    8,    1,    1,    1,    1,    1,
@@ -739,7 +739,7 @@ return NEWLINE;
 case 2:
 YY_RULE_SETUP
 #line 19 "exercici2.l"
-;	/* Ignora blancs i tabuladors fora de string */
+;	/* Ignora blancs, tabuladors fora de string i Carriage Return*/
 	YY_BREAK
 case 3:
 #line 22 "exercici2.l"
@@ -1745,10 +1745,10 @@ void yyfree (void * ptr )
 
 int main(){
   int val;
-  int counter=0;
+  int counter=1;
   int ignore=0;
   while ((val=yylex())!=0){
-    if (val==402){
+    if (val==NEWLINE){
         counter++;
         if (ignore==1){ 
             ignore=0;
@@ -1756,11 +1756,11 @@ int main(){
         printf("\n");
     }else{
         if (ignore==0){
-            if (val==404 && strcmp(yytext, "\n")){
+            if (val==ERROR){
                 printf("\nError en linea %d con token: %s\n", counter, yytext);
                 ignore = 1;
             }else{
-                printf("%s", yytext);    
+                printf("%s", yytext);
             }        
         }        
     }

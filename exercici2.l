@@ -16,7 +16,7 @@
 %%
 \n return NEWLINE;
 
-[ \t]+		;	/* Ignora blancs i tabuladors fora de string */
+[ \t\r]+ 	;	/* Ignora blancs, tabuladors fora de string i Carriage Return*/
 
 (\)|\() |
 (!|^|v) |
@@ -33,10 +33,10 @@
 
 int main(){
   int val;
-  int counter=0;
+  int counter=1;
   int ignore=0;
   while ((val=yylex())!=0){
-    if (val==402){
+    if (val==NEWLINE){
         counter++;
         if (ignore==1){ 
             ignore=0;
@@ -44,11 +44,11 @@ int main(){
         printf("\n");
     }else{
         if (ignore==0){
-            if (val==404){
+            if (val==ERROR){
                 printf("\nError en linea %d con token: %s\n", counter, yytext);
                 ignore = 1;
             }else{
-                printf("%s", yytext);    
+                printf("%s", yytext);
             }        
         }        
     }
