@@ -1,0 +1,11 @@
+#Estas son correctas ...
+a b c (c|d)+
+(a|BUIDA).c.(d.buida)?
+((a|b|c).(buida|b + .c*))?
+(buida| + .c*)?
+#Estas estan mal ...
+(A|BUIDA).C.(D.buida)?
+[a - z]+
+zabc+
+(a|EMPTY).c.(d.buida)?
+(a|BUIDA).c.(d.BUIDA)?;

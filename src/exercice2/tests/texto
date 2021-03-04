@@ -1,5 +1,12 @@
-Z->B
-A v A
-# ESTO ES UN COMENTARIO.
-B->GbT
-(O<->T)v    P->[T->U]
+#Exemples de formulas lexicament correctas:
+P ^ Q <-> (!Rv(Q->T))
+P^ <-> (!Rv(Q-> T))
+P^ Q <-> (!Rv(Q->T
+P Q <-> (!Rv(Q->T))
+
+#Exemples de formulas lexicament incorrectas:
+p^q <-> (!Rv(Q->T))
+P+Q*(!Rv(Q->T))
+[P^Q <-> [!Rv(Q->T)]]
+P^Q <=> (!Rv(Q=>T))
+P^Q <-> (!Rv(Q->T));

@@ -1,5 +1,5 @@
 
-TARGET = exercice2
+TARGET = exercice3
 all : $(TARGET)
 
 $(TARGET) : $(TARGET).l
