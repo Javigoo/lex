@@ -1,0 +1,17 @@
+
+/* 
+  Segon fitxer de prova per Processadors del Llenguatge. 
+*/
+
+// Primer incloem la capcalera
+#include "capcalera2.h"
+
+// Primera funcio
+int funcio( int a ) {
+   return a + 1;
+}
+
+int main( int argv, char *argv[] ) {
+   // Una funcio mail trivial
+   return funcio( argv );
+}

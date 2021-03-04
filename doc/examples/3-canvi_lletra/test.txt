@@ -1,0 +1,11 @@
+Quan la sequencia de caracters d’entrada no encaixa amb cap dels patrons
+especificats, Lex procedeix a copiar-la directament sobre el flux de sortida. Per defecte,
+la lectura i escriptura es realitzen sobre l’entrada i la sortida estandard,
+respectivament. Així doncs, el programa minim que podem escriure en Lex es el
+seguent:
+
+%%
+
+el qual llegeix de l’entrada estandard fins trobar la marca de final d’arxiu i escriu la
+sequencia obtinguda sobre la sortida estàndard caracter a caracter.
+

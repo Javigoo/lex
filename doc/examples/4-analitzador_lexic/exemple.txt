@@ -1,0 +1,7 @@
+# Aixo es un comentari
+
+"Aixo es un TEXT"
+
+a = 4.5 * 8 + 3.2;
+
+# L'anterior instruccio es un ID = NUMBER * NUMBER + NUMBER

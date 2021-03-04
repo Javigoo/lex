@@ -1,0 +1,14 @@
+"String correcte"
+
+"String mal construit: fanten tancar cometes
+
+"\"String correcte que conte cometes\""
+
+"\"String \t \047 correcte amb seq. escapament \\ "
+
+
+
+"String correcte! \x7A  \
+amb codis amb exh. i new line correcte que no forma part del text"
+
+

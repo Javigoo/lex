@@ -1,0 +1,5 @@
+Estem al text 2, passem al text 3
+
+#include	"text3.txt"
+
+tornem al text 2
