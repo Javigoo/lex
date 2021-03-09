@@ -1,0 +1,12 @@
+/* Realizamos un include */
+
+#include    "header2.h"
+#define CONSTANT 20
+
+
+/* Volvemos al archivo principal*/
+
+int main(){
+    printf("Hello world %i", CONSTANT);
+}
+
