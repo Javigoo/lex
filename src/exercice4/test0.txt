@@ -3,10 +3,9 @@
 #include    "header2.h"
 #define CONSTANT 20
 
-
 /* Volvemos al archivo principal*/
-
 int main(){
+    int a = CONSTANT+1;
     printf("Hello world %i", CONSTANT);
 }
 

@@ -1,7 +1,8 @@
+// Estamos en header2.h
 
-// Segona capcalera
+/* Realizamos otro include */
 
-#include "header.h"
+#include <header1.h>
 
 int global = 3;
 

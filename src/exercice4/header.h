@@ -1,4 +1,0 @@
-
-
-int funcio( int a );
-

@@ -24,16 +24,19 @@ dict_t **dict;
 
 %X COMMENT INCLUDE DEFINE
 
-simbols [a-zA-Z0-9_ ]
+simbols [a-zA-Z0-9_ ]+
+separator [ \t]+
+key [A-Z]+
+value .*
 
 
 %%
 
     char filename[ MAX_NAME+1 ];        
 
-^"#include"[ \t]+          BEGIN( INCLUDE );
+^"#include"{separator}          BEGIN( INCLUDE );
 
-<INCLUDE>(\"|\<){simbols}+(\.{simbols}+)?(\"|\>)   {
+<INCLUDE>(\"|\<){simbols}(\.{simbols})?(\"|\>)   {
                                                     strcpy( filename, &yytext[1] );            /* treiem les comestes inicials */
                                                     filename[ yyleng-2 ] = '\0';               /* treiem les comestes finals */
                                                     yyin = fopen( filename, "r" );
@@ -42,9 +45,9 @@ simbols [a-zA-Z0-9_ ]
                                                     BEGIN( INITIAL );
                                                     }
 
-^"#define"[ \t]+          BEGIN( DEFINE );
+^"#define"{separator}          BEGIN( DEFINE );
 
-<DEFINE>[A-Z]+\ .*\n                                {
+<DEFINE>{key}{separator}{value}\n                   {
                                                     char *key = strtok(yytext, " ");
                                                     char *value = strtok(NULL, "\n");
                                                     /*printf("(key:%s=value:%s)\n", key, value);*/
@@ -53,7 +56,7 @@ simbols [a-zA-Z0-9_ ]
                                                     BEGIN( INITIAL );
                                                     }
 
-[A-Z]+                                              {
+{key}                                               {
                                                     if(getItem(*dict, yytext) != NULL){
                                                         printf("%s", (char *)getItem(*dict, yytext));    /* ToDo: STDOUT to file */
                                                     }else{
