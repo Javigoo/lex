@@ -795,7 +795,7 @@ YY_RULE_SETUP
 case 3:
 YY_RULE_SETUP
 #line 45 "exercice4.l"
-BEGIN( DEFINE  );
+BEGIN( DEFINE );
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
@@ -803,10 +803,10 @@ YY_RULE_SETUP
 #line 47 "exercice4.l"
 {
                                                     char *key = strtok(yytext, " ");
-                                                    char *value = strtok(NULL, " ");
-                                                    /*printf("DEBUG -> %s=%s\n", key, value);*/
+                                                    char *value = strtok(NULL, "\n");
+                                                    /*printf("(key:%s=value:%s)\n", key, value);*/
 
-                                                    addItem(dict, key, "20");
+                                                    addItem(dict, key, value);
                                                     BEGIN( INITIAL );
                                                     }
 	YY_BREAK
@@ -814,9 +814,8 @@ case 5:
 YY_RULE_SETUP
 #line 56 "exercice4.l"
 {
-                                                    char *match = yytext;
-                                                    if(getItem(*dict, match) != NULL){
-                                                        printf("%s", (char *)getItem(*dict, match));
+                                                    if(getItem(*dict, yytext) != NULL){
+                                                        printf("%s", (char *)getItem(*dict, yytext));    /* ToDo: STDOUT to file */
                                                     }else{
                                                         yymore();
                                                     }
@@ -825,15 +824,15 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 65 "exercice4.l"
-printf("%s",yytext);
+#line 64 "exercice4.l"
+printf("%s",yytext);    /* ToDo: STDOUT to file */
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 67 "exercice4.l"
+#line 66 "exercice4.l"
 ECHO;
 	YY_BREAK
-#line 837 "lex.yy.c"
+#line 836 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 case YY_STATE_EOF(INCLUDE):
@@ -1799,7 +1798,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 67 "exercice4.l"
+#line 66 "exercice4.l"
 
 
 

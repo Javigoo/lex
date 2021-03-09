@@ -42,27 +42,26 @@ simbols [a-zA-Z0-9_ ]
                                                     BEGIN( INITIAL );
                                                     }
 
-^"#define"[ \t]+          BEGIN( DEFINE  );
+^"#define"[ \t]+          BEGIN( DEFINE );
 
 <DEFINE>[A-Z]+\ .*\n                                {
                                                     char *key = strtok(yytext, " ");
-                                                    char *value = strtok(NULL, " ");
-                                                    /*printf("DEBUG -> %s=%s\n", key, value);*/
+                                                    char *value = strtok(NULL, "\n");
+                                                    /*printf("(key:%s=value:%s)\n", key, value);*/
 
-                                                    addItem(dict, key, "20");
+                                                    addItem(dict, key, value);
                                                     BEGIN( INITIAL );
                                                     }
 
 [A-Z]+                                              {
-                                                    char *match = yytext;
-                                                    if(getItem(*dict, match) != NULL){
-                                                        printf("%s", (char *)getItem(*dict, match));
+                                                    if(getItem(*dict, yytext) != NULL){
+                                                        printf("%s", (char *)getItem(*dict, yytext));    /* ToDo: STDOUT to file */
                                                     }else{
                                                         yymore();
                                                     }
                                                     }
                                             
-.|\n    printf("%s",yytext);
+.|\n                                                printf("%s",yytext);    /* ToDo: STDOUT to file */
 
 %%
 
