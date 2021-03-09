@@ -361,8 +361,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 6
-#define YY_END_OF_BUFFER 7
+#define YY_NUM_RULES 7
+#define YY_END_OF_BUFFER 8
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -370,12 +370,12 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[40] =
+static yyconst flex_int16_t yy_accept[41] =
     {   0,
-        0,    0,    0,    0,    0,    0,    0,    0,    7,    6,
-        5,    6,    6,    6,    5,    0,    0,    0,    0,    0,
-        0,    0,    2,    0,    0,    4,    0,    0,    0,    0,
-        0,    0,    0,    0,    0,    3,    0,    1,    0
+        0,    0,    0,    0,    0,    0,    0,    0,    8,    6,
+        5,    6,    7,    7,    7,    5,    0,    0,    0,    0,
+        0,    0,    0,    2,    0,    0,    4,    0,    0,    0,
+        0,    0,    0,    0,    0,    0,    3,    0,    1,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -416,46 +416,46 @@ static yyconst flex_int32_t yy_meta[20] =
         2,    2,    2,    2,    2,    2,    2,    2,    2
     } ;
 
-static yyconst flex_int16_t yy_base[44] =
+static yyconst flex_int16_t yy_base[46] =
     {   0,
-       40,    0,    0,    0,    0,    3,   39,   38,   48,   52,
-       36,    0,    0,    3,   35,   31,   26,   12,   40,   14,
-       27,   29,   52,    0,   37,   52,   23,   21,    5,   19,
-       17,   21,   21,    0,   14,   19,   22,   25,   52,   29,
-       18,   31,    1
+       42,    0,    0,    0,    0,    3,   41,   40,   50,   54,
+       38,    0,   54,    0,    3,   37,   33,   28,   12,   42,
+       14,   29,   31,   54,    0,   39,   54,   25,   23,    5,
+       21,   19,   23,   23,    0,   14,   19,   22,   25,   54,
+       29,   31,   18,   33,    1
     } ;
 
-static yyconst flex_int16_t yy_def[44] =
+static yyconst flex_int16_t yy_def[46] =
     {   0,
-       40,   40,   40,   40,   40,   40,   40,   40,   39,   39,
-       39,   39,   41,   39,   39,   39,   39,   41,   42,   39,
-       39,   39,   39,   43,   42,   39,   39,   39,   43,   39,
-       39,   39,   39,   39,   39,   39,   39,   39,    0,   39,
-       39,   39,   39
+       41,   41,   42,   42,   42,   42,   42,   42,   40,   40,
+       40,   40,   40,   43,   40,   40,   40,   40,   43,   44,
+       40,   40,   40,   40,   45,   44,   40,   40,   40,   45,
+       40,   40,   40,   40,   40,   40,   40,   40,   40,    0,
+       40,   40,   40,   40,   40
     } ;
 
-static yyconst flex_int16_t yy_nxt[72] =
+static yyconst flex_int16_t yy_nxt[74] =
     {   0,
-       39,   36,   29,   36,   13,   12,   19,   13,   13,   23,
-       11,   13,   16,   20,   23,   17,   23,   19,   24,   18,
-       36,   23,   36,   38,   20,   38,   38,   37,   38,   10,
-       10,   25,   25,   35,   34,   33,   32,   31,   30,   26,
-       28,   27,   26,   22,   21,   15,   15,   39,   14,   14,
-       11,    9,   39,   39,   39,   39,   39,   39,   39,   39,
-       39,   39,   39,   39,   39,   39,   39,   39,   39,   39,
-       39
+       40,   37,   30,   37,   14,   12,   20,   14,   14,   24,
+       11,   14,   17,   21,   24,   18,   24,   20,   25,   19,
+       37,   24,   37,   39,   21,   39,   39,   38,   39,   10,
+       10,   13,   13,   26,   26,   36,   35,   34,   33,   32,
+       31,   27,   29,   28,   27,   23,   22,   16,   16,   40,
+       15,   15,   11,    9,   40,   40,   40,   40,   40,   40,
+       40,   40,   40,   40,   40,   40,   40,   40,   40,   40,
+       40,   40,   40
     } ;
 
-static yyconst flex_int16_t yy_chk[72] =
+static yyconst flex_int16_t yy_chk[74] =
     {   0,
-        0,   34,   43,   34,    5,    2,   14,    6,    5,   29,
-        2,    6,   12,   14,   29,   12,   18,   20,   18,   41,
-       36,   18,   36,   37,   20,   37,   38,   35,   38,   40,
-       40,   42,   42,   33,   32,   31,   30,   28,   27,   25,
-       22,   21,   19,   17,   16,   15,   11,    9,    8,    7,
-        1,   39,   39,   39,   39,   39,   39,   39,   39,   39,
-       39,   39,   39,   39,   39,   39,   39,   39,   39,   39,
-       39
+        0,   35,   45,   35,    5,    2,   15,    6,    5,   30,
+        2,    6,   12,   15,   30,   12,   19,   21,   19,   43,
+       37,   19,   37,   38,   21,   38,   39,   36,   39,   41,
+       41,   42,   42,   44,   44,   34,   33,   32,   31,   29,
+       28,   26,   23,   22,   20,   18,   17,   16,   11,    9,
+        8,    7,    1,   40,   40,   40,   40,   40,   40,   40,
+       40,   40,   40,   40,   40,   40,   40,   40,   40,   40,
+       40,   40,   40
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -745,13 +745,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 40 )
+				if ( yy_current_state >= 41 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 52 );
+		while ( yy_base[yy_current_state] != 54 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -804,9 +804,9 @@ YY_RULE_SETUP
 {
                                                     char *key = strtok(yytext, " ");
                                                     char *value = strtok(NULL, " ");
-                                                    printf("DEBUG -> %s=%s\n", key, value);
+                                                    /*printf("DEBUG -> %s=%s\n", key, value);*/
 
-                                                    addItem(dict, key, value);
+                                                    addItem(dict, key, "20");
                                                     BEGIN( INITIAL );
                                                     }
 	YY_BREAK
@@ -816,18 +816,24 @@ YY_RULE_SETUP
 {
                                                     char *match = yytext;
                                                     if(getItem(*dict, match) != NULL){
-                                                        printf("%s",getItem(*dict, match));
+                                                        printf("%s", (char *)getItem(*dict, match));
                                                     }else{
                                                         yymore();
                                                     }
                                                     }
 	YY_BREAK
 case 6:
+/* rule 6 can match eol */
 YY_RULE_SETUP
-#line 64 "exercice4.l"
+#line 65 "exercice4.l"
+printf("%s",yytext);
+	YY_BREAK
+case 7:
+YY_RULE_SETUP
+#line 67 "exercice4.l"
 ECHO;
 	YY_BREAK
-#line 831 "lex.yy.c"
+#line 837 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 case YY_STATE_EOF(INCLUDE):
@@ -1123,7 +1129,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 40 )
+			if ( yy_current_state >= 41 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1151,11 +1157,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 40 )
+		if ( yy_current_state >= 41 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 39);
+	yy_is_jam = (yy_current_state == 40);
 
 	return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1793,7 +1799,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 64 "exercice4.l"
+#line 67 "exercice4.l"
 
 
 
@@ -1814,6 +1820,8 @@ int main( int argc, char *argv[] ) {
 }
 
 void addItem(dict_t **dict, char *key, void *value) {
+    /*printf("addItem(dict, %s, %s)", key, value);*/
+
     dict_t *d = malloc(sizeof(struct dict_t_struct));
     d->key = malloc(strlen(key)+1);
     strcpy(d->key, key);

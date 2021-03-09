@@ -47,20 +47,23 @@ simbols [a-zA-Z0-9_ ]
 <DEFINE>[A-Z]+\ .*\n                                {
                                                     char *key = strtok(yytext, " ");
                                                     char *value = strtok(NULL, " ");
-                                                    printf("DEBUG -> %s=%s\n", key, value);
+                                                    /*printf("DEBUG -> %s=%s\n", key, value);*/
 
-                                                    addItem(dict, key, value);
+                                                    addItem(dict, key, "20");
                                                     BEGIN( INITIAL );
                                                     }
 
 [A-Z]+                                              {
                                                     char *match = yytext;
                                                     if(getItem(*dict, match) != NULL){
-                                                        printf("%s",getItem(*dict, match));
+                                                        printf("%s", (char *)getItem(*dict, match));
                                                     }else{
                                                         yymore();
                                                     }
                                                     }
+                                            
+.|\n    printf("%s",yytext);
+
 %%
 
 int yywrap(){
@@ -80,6 +83,8 @@ int main( int argc, char *argv[] ) {
 }
 
 void addItem(dict_t **dict, char *key, void *value) {
+    /*printf("addItem(dict, %s, %s)", key, value);*/
+
     dict_t *d = malloc(sizeof(struct dict_t_struct));
     d->key = malloc(strlen(key)+1);
     strcpy(d->key, key);
