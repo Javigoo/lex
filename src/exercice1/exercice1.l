@@ -158,5 +158,4 @@ const char* escape_separator_characters(char* ascii_character){
 /* 
 Todo: 
 	- Detectar identificadores primero y comprobar si dentro de este hay una palabra reservada 
-	- Printar saltos de linia, tabuladores y espacios con /n, /t y /s respectivamente
 */ 
