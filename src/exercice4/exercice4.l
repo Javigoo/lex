@@ -20,6 +20,7 @@ void *getItem(dict_t *, char *);
 
 dict_t **dict;
 
+
 %}
 
 %X COMMENT INCLUDE DEFINE
@@ -58,13 +59,13 @@ value .*
 
 {key}                                               {
                                                     if(getItem(*dict, yytext) != NULL){
-                                                        printf("%s", (char *)getItem(*dict, yytext));    /* ToDo: STDOUT to file */
+                                                        fprintf(yyout, "%s", (char *)getItem(*dict, yytext));
                                                     }else{
                                                         yymore();
                                                     }
                                                     }
-                                            
-.|\n                                                printf("%s",yytext);    /* ToDo: STDOUT to file */
+.|\n                                                fprintf(yyout, "%s", yytext);
+
 
 %%
 
@@ -79,14 +80,16 @@ int yywrap(){
 
 int main( int argc, char *argv[] ) {
    dict = malloc(sizeof(dict_t));
-   yyin = fopen( argv[ 1 ], "r" );
+
+   yyin = fopen( argv[1], "r" );
+   yyout = fopen(argv[2], "w");
+
    yylex();
+
    return 0;
 }
 
 void addItem(dict_t **dict, char *key, void *value) {
-    /*printf("addItem(dict, %s, %s)", key, value);*/
-
     dict_t *d = malloc(sizeof(struct dict_t_struct));
     d->key = malloc(strlen(key)+1);
     strcpy(d->key, key);
@@ -105,3 +108,8 @@ void *getItem(dict_t *dict, char *key) {
     
     return NULL;
 }
+
+/* 
+Todo: 
+	- STDOUT to file
+*/ 

@@ -27,42 +27,43 @@ int keywords = 0;
 int identifiers = 0;
 int constants = 0;			/* enteres, reals, de caracter, de cadena -string- */
 int operators = 0;			/* aritmetics, logics, relacionals, d’assignacio */
-int delimiters = 0;		/* (’(’, ’)’, ’[’, ’]’, ’’, ’’, ’,’, ’;’ ...) */
-int separators = 0;		/* blancs, tabuladors, new line */
+int delimiters = 0;			/* (’(’, ’)’, ’[’, ’]’, ’’, ’’, ’,’, ’;’ ...) */
+int separators = 0;			/* blancs, tabuladors, new line */
 int comments = 0;
 int others = 0;			
 
 void identify_token(int);
 void get_statistics();
 float get_percentage(int, int);
-const char* escape_separator_characters(int);
+const char* escape_separator_characters(char*);
+
 
 %}
 
 keywords		(False|await|else|import|pass|None|break|except|in|raise|True|class|finally|is|return|and|continue|for|lambda|try|as|def|from|nonlocal|while|assert|del|global|not|with|async|elif|if|or|yield)
-identifiers		(\+|-|\*|\/|%|\/\/|\*\*|<|>|==|!=|>=|<=|&|\||~|\^|>>|<<|=|\+=|-=|\*=|\/=|%=|\/\/=|\*\*=|&=|\|=|\^=|>>=|<<=|is|is\snot|in|not\sin)
-constants		[a-zA-Z_][a-zA-Z0-9_]*
-operators		\"[^\"\n]*\"|[0-9]+|[0-9]*\.[0-9]+
-delimiters		(\(|\)|\[|\]|,|:)
-separators		(\ |\t|\n)
-comments		#.*
+operators 		(\+|-|\*|\/|%|\/\/|\*\*|<|>|==|!=|>=|<=|&|\||~|\^|>>|<<|=|\+=|-=|\*=|\/=|%=|\/\/=|\*\*=|&=|\|=|\^=|>>=|<<=|is|is\snot|in|not\sin)
+comments		(#.*|\"\"\".*\"\"\")
+constants		\"[^\"\n]*\"|[0-9]+|[0-9]*\.[0-9]+		
+identifiers		[a-zA-Z_][a-zA-Z0-9_]*		
+delimiters		(\(|\)|\[|\]|:|;|\ |\t|\n)
+separators		(,)
 others			.
 
 %%
 
 {keywords}		return KEYWORD;
 
-{identifiers}	return OPERATOR;
+{operators}		return OPERATOR;
 
-{constants}		return ID;
+{comments}		return COMMENT;
 
-{operators}		return CONSTANT;
+{constants}		return CONSTANT;
+
+{identifiers}	return ID;
 
 {delimiters}	return DELIMITATOR;
 
 {separators}	return SEPARATOR;
-
-{comments}		return COMMENT;
 
 {others}		return OTHER;
 
@@ -104,11 +105,11 @@ void identify_token(int token){
 			operators++;
 			break;
 		case DELIMITATOR:
-			printf("DELIMITATOR:\t%s\n",yytext);
+			printf("DELIMITATOR:\t%s\n",escape_separator_characters(yytext));
 			delimiters++;
 			break;
 		case SEPARATOR:
-			printf("SEPARATOR:\t%s\n", escape_separator_characters(yytext[0]));
+			printf("SEPARATOR:\t%s\n",yytext);
 			separators++;
 			break;
 		case COMMENT:
@@ -127,29 +128,39 @@ void identify_token(int token){
 void get_statistics(){
 	int total= keywords + identifiers + constants + operators + delimiters + separators + comments + others;
 	printf("\n");
-	printf("Palabras reservadas: %.2f%%\n", get_percentage(keywords,total));
-	printf("Identificadores: %.2f%%\n", get_percentage(identifiers,total));
-	printf("Constantes: %.2f%%\n", get_percentage(constants,total));
-	printf("Operadores: %.2f%%\n", get_percentage(operators,total));
-	printf("Delimitadores: %.2f%%\n", get_percentage(delimiters,total));
-	printf("Separadores: %.2f%%\n", get_percentage(separators,total));
-	printf("Comentarios: %.2f%%\n", get_percentage(comments,total));
-	printf("Otros: %.2f%%\n", get_percentage(others,total));
+	printf("Palabras reservadas: 	%.2f%%\n", get_percentage(keywords,total));
+	printf("Identificadores: 		%.2f%%\n", get_percentage(identifiers,total));
+	printf("Constantes: 			%.2f%%\n", get_percentage(constants,total));
+	printf("Operadores: 			%.2f%%\n", get_percentage(operators,total));
+	printf("Delimitadores: 			%.2f%%\n", get_percentage(delimiters,total));
+	printf("Separadores: 			%.2f%%\n", get_percentage(separators,total));
+	printf("Comentarios: 			%.2f%%\n", get_percentage(comments,total));
+	printf("Otros: 					%.2f%%\n", get_percentage(others,total));
 }
 
 float get_percentage(int amount, int total){
 	return (amount/ (float) total)*100;
 }
 
-const char* escape_separator_characters(int ascii_character){
-	switch(ascii_character) {
-		case 32:
-			return "\\s";
+const char* escape_separator_characters(char* ascii_character){
+	if(strcmp(ascii_character,"\\n")){
+		return "\\n";
+	}
+
+	switch(atoi(ascii_character)) {
 		case 9:
 			return "\\t";
 		case 10:
 			return "\\n";
-		break;
+		case 32:
+			return "\\s";
+		default:
+			return ascii_character;
 	}
-	return "Unrecognized separator character";
 }
+
+/* 
+Todo: 
+	- Detectar identificadores primero y comprobar si dentro de este hay una palabra reservada 
+	- Printar saltos de linia, tabuladores y espacios con /n, /t y /s respectivamente
+*/ 

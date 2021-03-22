@@ -3,7 +3,7 @@ TARGET = exercice1
 all : $(TARGET)
 
 $(TARGET) : $(TARGET).l
-	flex $(TARGET).l
+	lex $(TARGET).l
 	gcc -Wall lex.yy.c -o $(TARGET) -ll
 
 clean:

@@ -1,4 +1,5 @@
 # Soy un comentario
+""" Otro comentario """
 
 soy_un_identificador = "Soy una constante"
 
