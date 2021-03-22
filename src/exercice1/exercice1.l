@@ -143,11 +143,7 @@ float get_percentage(int amount, int total){
 }
 
 const char* escape_separator_characters(char* ascii_character){
-	if(strcmp(ascii_character,"\\n")){
-		return "\\n";
-	}
-
-	switch(atoi(ascii_character)) {
+	switch(ascii_character[0]) {
 		case 9:
 			return "\\t";
 		case 10:
